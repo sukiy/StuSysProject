@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="project@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="project">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mydb"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="mytest"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="test"/>
+    <table id="9" parent="2" name="tb_class"/>
+    <table id="10" parent="2" name="tb_lesson"/>
+    <table id="11" parent="2" name="tb_stu"/>
+    <table id="12" parent="2" name="tb_teacher"/>
+    <table id="13" parent="2" name="tb_user"/>
+    <column id="14" parent="9" name="cno">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="9" name="cname">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="16" parent="9" name="ctno">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="17" parent="9" name="FKskf6oimv8c8uhtvwgrrc1sx4v">
+      <ColNames>ctno</ColNames>
+    </index>
+    <key id="18" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cno</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="19" parent="9" name="FKskf6oimv8c8uhtvwgrrc1sx4v">
+      <ColNames>ctno</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>tb_teacher</RefTableName>
+      <RefColNames>tno</RefColNames>
+    </foreign-key>
+    <column id="20" parent="10" name="lno">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="10" name="lname">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="22" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lno</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="11" name="sno">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="11" name="sage">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="11" name="sex">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="26" parent="11" name="sintime">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="27" parent="11" name="sname">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="28" parent="11" name="scno">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="29" parent="11" name="FKd0h65hdpnpw5vvng60vognx34">
+      <ColNames>scno</ColNames>
+    </index>
+    <key id="30" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sno</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="31" parent="11" name="FKd0h65hdpnpw5vvng60vognx34">
+      <ColNames>scno</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>tb_class</RefTableName>
+      <RefColNames>cno</RefColNames>
+    </foreign-key>
+    <column id="32" parent="12" name="tno">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="12" name="tname">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="34" parent="12" name="tlno">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="35" parent="12" name="FKbldw1lu1x6kaey5d8348gkila">
+      <ColNames>tlno</ColNames>
+    </index>
+    <key id="36" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tno</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="12" name="FKbldw1lu1x6kaey5d8348gkila">
+      <ColNames>tlno</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>tb_lesson</RefTableName>
+      <RefColNames>lno</RefColNames>
+    </foreign-key>
+    <column id="38" parent="13" name="uno">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="13" name="uname">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="40" parent="13" name="upwd">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="41" parent="13" name="ustatus">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="42" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>uno</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
