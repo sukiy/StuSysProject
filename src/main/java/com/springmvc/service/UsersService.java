@@ -37,4 +37,12 @@ public class UsersService {
         return usersDao.addUsers(users);
     }
 
+
+    public UsersDao getUsersDao() {
+        return usersDao;
+    }
+
+    public void setUsersDao(UsersDao usersDao) {
+        this.usersDao = usersDao;
+    }
 }

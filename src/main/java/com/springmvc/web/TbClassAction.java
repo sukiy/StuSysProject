@@ -28,6 +28,14 @@ public class TbClassAction {
     @RequestMapping("/addCls")
     @ResponseBody
     public String addCls(TbClass cls){
+
+        List clsList=clsService.findClsList();
+        for (int z=0;z<clsList.size();z++){
+            Object[] objs = (Object[]) clsList.get(z);
+            if (objs[1].equals(cls.getCname())){
+                return "error";
+            }
+        }
         if (clsService.addCls(cls)){
             return "success";
         }

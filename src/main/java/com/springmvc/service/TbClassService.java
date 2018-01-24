@@ -24,6 +24,7 @@ public class TbClassService {
     }
 
     public boolean addCls(TbClass cls){
+
         return clsDao.addCls(cls);
     }
 

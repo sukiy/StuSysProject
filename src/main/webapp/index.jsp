@@ -20,7 +20,7 @@
 
 <div style="width: 320px; margin: 0 auto;margin-top: 15%;" >
     <h2 style="font-family: 微软雅黑;margin-bottom: 20px;font-weight: bold">用户登录</h2>
-    <form class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/usersAction/doLogin" method="post" >
+    <form class="layui-form layui-form-pane">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">用户名</label>
@@ -34,7 +34,7 @@
                     <input name="upwd" autocomplete="off" class="layui-input" type="password">
                 </div>
             </div><br>
-            <button class="layui-btn" lay-submit="" lay-filter="demo1;">登录</button>
+            <div class="layui-btn" lay-submit lay-filter="userLogin">登录</div>
             <a href="doRegist.jsp">还没账号？一键注册</a>
         </div>
     </form>
@@ -43,8 +43,29 @@
 </body>
 </html>
 <script>
-    var i =${param.rtype}
-    if(i==-1){
-        alert("登录失败");
-    }
+    //Demo
+    layui.use(['form','jquery'], function(){
+        var form = layui.form;
+        var $ = layui.jquery;
+        //监听提交
+        form.on('submit(userLogin)', function(data){
+            var param = data.field;
+            $.ajax({
+                url:'${pageContext.request.contextPath}/usersAction/doLogin',
+                data: param,
+                type: 'post',
+                dataType:'text',
+                success: function (res) {
+                    if(res === "success"){
+                        location.href = "${pageContext.request.contextPath}/Main.jsp"
+                    }else{
+                        layer.msg("登录失败！");
+                    }
+                },
+                error: function () {
+                    layer.msg("登录失败！");
+                }
+            });
+        });
+    });
 </script>

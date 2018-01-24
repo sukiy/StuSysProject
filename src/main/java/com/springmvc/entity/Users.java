@@ -13,7 +13,6 @@ public class Users {
     private String uname;
     private String upwd;
     private int ustatus=1;
-
     public Users() {
     }
 
@@ -58,3 +57,4 @@ public class Users {
         this.ustatus = ustatus;
     }
 }
+

@@ -27,6 +27,12 @@ public class StuAction {
         return stuService.findStuList();
     }
 
+    @RequestMapping("/findStuByName")
+    @ResponseBody
+    public List findStuByName(String name){ //根据姓名查询 ，在这里，我们可以看到，你是要把这个值封装到变量中，所以，，，
+        return stuService.findStuByName(name);
+    }
+
     @RequestMapping("/addStu")
     @ResponseBody
     public int addStu(TbStu stu){
@@ -52,8 +58,6 @@ public class StuAction {
     @RequestMapping("/toUpdate")
     @ResponseBody
     public TbStu toUpdate(TbStu stu){
-        //直接把查询出来的stu对象返回到前台，这是异步的做法
-        //如果是同步，再参数列表里加上model|modelMap...,用来把你查出来的数据保存到作用域中，带到前台
         return stuService.findStuById(stu.getSno());
     }
 

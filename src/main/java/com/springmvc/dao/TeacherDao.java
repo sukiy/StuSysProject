@@ -1,7 +1,6 @@
 package com.springmvc.dao;
 
 import com.springmvc.entity.TbTeacher;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -8,7 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
 <div style="margin:20px 20px"><h2>学生信息><a href="Main.jsp">首页</a></h2></div>
 <div style="width: 1000px;margin: 40px auto">
-    <table class="layui-table" id="tab">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px">学生姓名查询</label>
+            <div class="layui-inline">
+                <input type="text" name="name" placeholder="请输入学生姓名" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-btn" lay-submit lay-filter="likeQuery">
+                <i class="layui-icon">&#xe615;</i>
+                <span>搜索</span>
+            </div>
+        </div>
+    </form>
+        <table class="layui-table" id="tab">
         <colgroup>
             <col width="150">
             <col width="150">
@@ -32,27 +44,35 @@
 </div>
 
 <script type="text/javascript">
+
+    //渲染表格
+    function renderStuTable(data) {
+        $.each(data,function (i,v) {
+            var tr="<tr>";
+            tr+="<td><input name='ids' value='"+v[0]+"' type='checkbox' lay-skin='primary'/>"+(i+1)+"</td>";
+            tr+="<td>"+v[1]+"</td>";
+            tr+="<td>"+v[3]+"</td>";
+            tr+="<td>"+v[2]+"</td>";
+            tr+="<td>"+v[4]+"</td>";
+            tr+="<td>"+v[5]+"</td>";
+            tr+="<td>"+v[6]+"</td>";
+            tr+="<td><a href='javascript:updateStu("+v[0]+")' style='cursor: pointer;color: rgb(0,150,136)'>修改</a></td>";
+            tr+="</tr>";
+            $("#tab").append(tr);
+            form.render();
+        });
+    }
+
     /*信息查询*/
     function loadData(){
         $("#tab tr:not(:first)").remove();
         $.get("stuAction/findStuList","",function (data) {
-            $.each(data,function (i,v) {
-                var tr="<tr>";
-                tr+="<td><input name='ids' value='"+v[0]+"' type='checkbox' lay-skin='primary'/>"+(i+1)+"</td>";
-                tr+="<td>"+v[1]+"</td>";
-                tr+="<td>"+v[3]+"</td>";
-                tr+="<td>"+v[2]+"</td>";
-                tr+="<td>"+v[4]+"</td>";
-                tr+="<td>"+v[5]+"</td>";
-                tr+="<td>"+v[6]+"</td>";
-                tr+="<td><a href='javascript:updateStu("+v[0]+")' style='cursor: pointer;color: rgb(0,150,136)'>修改</a></td>";
-                tr+="</tr>";
-                $("#tab").append(tr);
-                form.render();
-            });
+            renderStuTable(data);
         });
     }
     window.onload=loadData();
+
+
 
 /****************************************************************************/
     /*全选反选*/
@@ -217,10 +237,27 @@
         });
     }
 
+    form.on('submit(likeQuery)',function (data) {
+        $.ajax({
+            url:'${pageContext.request.contextPath}/stuAction/findStuByName',
+            type:"post",
+            data: data.field,
+            timeout:3000, //这个是什么意思！待会示范给你看看可以不，嗯
+            success:function(result){
+                $("#tab tr:not(:first)").remove();
+                renderStuTable(result);
+            },
+            error:function(){
+                layer.msg("查询失败！");
+            }
+        });
+        return false;
+    });
+
  /*********************************************************************************/
     //提交监听
     form.on('submit(formDemo)', function(data){
-        var param = $("#fom").serialize();
+        var param = $("#fom").serialize(); //你这里怎么还这样写？不是这样写？要传param啊。你看看这里
         $.ajax({
             url:'${pageContext.request.contextPath}/stuAction/updateStu',
             type:"post",

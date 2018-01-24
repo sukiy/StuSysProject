@@ -31,16 +31,14 @@ public class UsersAction {
     HttpServletRequest request;
 
     @RequestMapping("/doLogin")
-    public String doLogin(Users users,RedirectAttributes attr,HttpSession session){    //用户登录
+    @ResponseBody
+    public String doLogin(Users users, HttpSession session){    //用户登录
         users=usersService.doLogin(users);
         if (users!=null){
-            attr.addAttribute("rtype","1");
             session.setAttribute("users",users);
-        }else {
-            attr.addAttribute("rtype","-1");
-            return "redirect:/index.jsp";
+            return "success";
         }
-        return "redirect:/Main.jsp";
+        return "faild";
     }
 
     @RequestMapping("/doRegist")

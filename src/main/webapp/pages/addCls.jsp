@@ -60,7 +60,10 @@
             type:'post',
             timeout:3000,
             success:function(result){
-                layer.msg("添加成功");
+                if (result=="success"){
+                    layer.msg("添加成功");
+                }else
+                    layer.msg("添加失败,班级名相同");
             },
             error:function(){
                 layer.msg("请正确填写班级信息！");

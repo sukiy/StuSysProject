@@ -88,6 +88,7 @@
             timeout:3000,
         success:function(result){
             layer.msg("添加成功");
+            $("#tab")[0].reset();
         },
         error:function(){
             layer.msg("请正确填写学生信息！");

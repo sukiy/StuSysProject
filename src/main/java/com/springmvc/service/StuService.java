@@ -26,6 +26,17 @@ public class StuService {
         return stuDao.findStuList(hql);
     }
 
+    /**
+     * 模糊查询（根据姓名查询）
+     * @param name 学生姓名
+     * @return List
+     */
+    public List findStuByName(String name){
+        String hql="select s.sno,s.sname,s.sage,s.sex,s.sintime,c.cname,t.tname from TbStu s" +
+                " inner join s.tbClass c left join c.tbTeacher t where sname like '%" + name + "%' order by c.cname asc";
+        return stuDao.findStuList(hql);
+    }
+
     public boolean addStu(TbStu stu){ //添加学生
         return stuDao.addStu(stu);
     }

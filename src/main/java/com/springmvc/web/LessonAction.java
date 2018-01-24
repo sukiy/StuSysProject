@@ -33,7 +33,7 @@ public class LessonAction {
     @ResponseBody
     public String addLesson(Lesson lesson){
         //调用服务层方法执行添加业务
-        if (lessonService.addLesson(lesson)) {
+        if (lessonService.addLesson(lesson) ) {
             return "success";
         }
         return null;
